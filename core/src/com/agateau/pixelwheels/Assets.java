@@ -78,7 +78,6 @@ public class Assets implements TextureRegionProvider {
     public final Array<ObstacleDef> obstacleDefs = new Array<>();
     public UiAssets ui;
 
-    public final TextureRegion wheel;
     public final TextureRegion dot;
     public final TextureAtlas atlas;
     public final Animation<TextureRegion> impact;
@@ -104,7 +103,6 @@ public class Assets implements TextureRegionProvider {
     Assets() {
         this.languages = new Languages(FileUtils.assets("ui/languages.xml"));
         this.atlas = new StrictTextureAtlas(FileUtils.assets("sprites/sprites.atlas"));
-        this.wheel = findRegion("wheel");
         this.explosion =
                 new Animation<>(EXPLOSION_FRAME_DURATION, this.atlas.findRegions("explosion"));
         this.impact = new Animation<>(IMPACT_FRAME_DURATION, this.atlas.findRegions("impact"));

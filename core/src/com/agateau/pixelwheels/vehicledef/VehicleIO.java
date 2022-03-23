@@ -38,6 +38,9 @@ public class VehicleIO {
             throw new RuntimeException("No such file " + fileName);
         }
         XmlReader.Element root = FileUtils.parseXml(handle);
+        if (root == null) {
+            throw new RuntimeException("Error loading vehicle from " + fileName);
+        }
         try {
             return get(root, id);
         } catch (Exception e) {
@@ -75,6 +78,7 @@ public class VehicleIO {
             axle.steer = element.getFloatAttribute("steer", 0);
             axle.drive = element.getFloatAttribute("drive", 1);
             axle.drift = element.getBooleanAttribute("drift", true);
+            axle.tyreSize = AxleDef.TyreSize.valueOf(element.getAttribute("tyreSize", "NORMAL"));
             data.axles.add(axle);
         }
         return data;
